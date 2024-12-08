@@ -5,16 +5,21 @@
 int main() {
     int a,b,operator;
     srand(time(NULL));
-    a = rand()%5;
-    b = rand()%5;
     do{
-        printf("Choose an operator(1-4):\n\t1) +\n\t2) - \
-        \n\t3) *\n\t4) /\n");
+        printf("Dialekse Praksi(1-5):\n\t1) Prosthesi\n\t2) Afairesi \
+        \n\t3) Pollaplasiasmos\n\t4) Diairesi\n\t5) Tyxaia Epilogi!\n");
         scanf("%d", &operator);
-        if (operator < 1 || operator > 4) {
-            printf("Error: Please enter a valid number between 1 and 4.\n");
+        if (operator < 1 || operator > 5) {
+            printf(" Parakalw dialekse enan arithmo apo to 1 ews to 5\n");
     }
-    }while(operator<1 || operator>4);
-
+    }while(operator<1 || operator>5);
+    switch (operator)
+    {
+    case 1: addition(); break;
+    case 2: subtraction(); break;
+    case 3: multiplication(); break;
+    case 4: division(); break;
+    case 5: randoperation(); break;
+    }
     return 0;
 }
