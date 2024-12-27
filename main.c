@@ -47,89 +47,160 @@ int main() {
     case 4: division(); break;
     case 5: randoperation(); break;
     }
+    puts("Telos programmatos! Mpravo!");
     return 0;
 }
+
+// ------------FUNCTIONS------------
+
   void addition(void) {
-    int n1 = rand() % 6;
-    int n2 = rand() % 6;
+    int correct=0;
     float ans;
-
-    do {
-        printf("Poso kanei: %d kai %d ?\n", n1, n2);
-        scanf("%f", &ans);
-
-        float correct_result = round_to_two_decimals(n1 + n2);
-        float user_answer = round_to_two_decimals(ans);
-
-        if (user_answer == correct_result) {
-            printf("%s\n", RIGHT_RESP[rand() % 4]);
-        } else {
-            printf("%s\n", WRONG_RESP[rand() % 4]);
+    do{
+        int n1, n2;
+        if(correct<8){
+            n1 = rand() % 6;
+            n2 = rand() % 6;
+        }else if(correct>10){
+            n1 = rand() % 11;
+            n2 = rand() % 11;
+        }else{
+            n1 = 3 + rand() % 6;
+            n2 = 3 + rand() % 6;
         }
-    } while (round_to_two_decimals(ans) != round_to_two_decimals(n1 + n2));
+        do {
+            printf("Poso kanei: %d kai %d ?\n", n1, n2);
+            scanf("%f", &ans);
+
+            float correct_result = round_to_two_decimals(n1 + n2);
+            float user_answer = round_to_two_decimals(ans);
+
+            if (user_answer == correct_result) {
+                printf("%s\n", RIGHT_RESP[rand() % 4]);
+                break;
+            } else {
+                printf("%s\n", WRONG_RESP[rand() % 4]);
+            }
+        } while (1);
+    correct++;
+  }while(correct<=15);
 }
 void subtraction(void) {
-    int n1, n2;
-    do {
-        n1 = rand() % 6;
-        n2 = rand() % 6;
-    } while (n1 - n2 < 0);
-
+    int correct = 0;
     float ans;
-
     do {
-        printf("Poso kanei: %d plin %d ?\n", n1, n2);
-        scanf("%f", &ans);
-
-        float correct_result = round_to_two_decimals(n1 - n2);
-        float user_answer = round_to_two_decimals(ans);
-
-        if (user_answer == correct_result) {
-            printf("%s\n", RIGHT_RESP[rand() % 4]);
+        int n1, n2;
+        if(correct < 8) {
+            n1 = rand() % 6;
+            n2 = rand() % 6;
+            while (n1 - n2 < 0) {
+                n1 = rand() % 6;
+                n2 = rand() % 6;
+            }
+        } else if(correct > 10) {
+            n1 = rand() % 11;
+            n2 = rand() % 11;
+            while (n1 - n2 < 0) {
+                n1 = rand() % 11;
+                n2 = rand() % 11;
+            }
         } else {
-            printf("%s\n", WRONG_RESP[rand() % 4]);
+            n1 = 3 + rand() % 6;
+            n2 = 3 + rand() % 6;
+            while (n1 - n2 < 0) {
+                n1 = 3 + rand() % 6;
+                n2 = 3 + rand() % 6;
+            }
         }
-    } while (round_to_two_decimals(ans) != round_to_two_decimals(n1 - n2));
+
+        do {
+            printf("Poso kanei: %d plin %d ?\n", n1, n2);
+            scanf("%f", &ans);
+
+            float correct_result = round_to_two_decimals(n1 - n2);
+            float user_answer = round_to_two_decimals(ans);
+
+            if (user_answer == correct_result) {
+                printf("%s\n", RIGHT_RESP[rand() % 4]);
+                break;
+            } else {
+                printf("%s\n", WRONG_RESP[rand() % 4]);
+            }
+        } while (1);
+        correct++;
+    } while(correct <= 15);
 }
 void multiplication(void) {
-    int n1 = rand() % 6;
-    int n2 = rand() % 6;
+    int correct = 0;
     float ans;
-
     do {
-        printf("Poso kanei: %d epi %d ?\n", n1, n2);
-        scanf("%f", &ans);
-
-        float correct_result = round_to_two_decimals(n1 * n2);
-        float user_answer = round_to_two_decimals(ans);
-
-        if (user_answer == correct_result) {
-            printf("%s\n", RIGHT_RESP[rand() % 4]);
+        int n1, n2;
+        if(correct < 8) {
+            n1 = rand() % 6;
+            n2 = rand() % 6;
+        } else if(correct > 10) {
+            n1 = rand() % 11;
+            n2 = rand() % 11;
         } else {
-            printf("%s\n", WRONG_RESP[rand() % 4]);
+            n1 = 3 + rand() % 6;
+            n2 = 3 + rand() % 6;
         }
-    } while (round_to_two_decimals(ans) != round_to_two_decimals(n1 * n2));
+
+        do {
+            printf("Poso kanei: %d epi %d ?\n", n1, n2);
+            scanf("%f", &ans);
+
+            float correct_result = round_to_two_decimals(n1 * n2);
+            float user_answer = round_to_two_decimals(ans);
+
+            if (user_answer == correct_result) {
+                printf("%s\n", RIGHT_RESP[rand() % 4]);
+                break;
+            } else {
+                printf("%s\n", WRONG_RESP[rand() % 4]);
+            }
+        } while (1);
+        correct++;
+    } while(correct <= 15);
 }
 void division(void) {
-	int n2;
-    int n1 =rand() % 6; // min + rand()%(max-min+1)
-    do{
-    n2 =rand() % 6;
-    }while(n2==0);
+    int correct = 0;
     float ans;
     do {
-        printf("Poso kanei: %d dia %d ?\n", n1, n2);
-        scanf("%f", &ans);
-
-        float correct_result = round_to_two_decimals(n1 / (float)n2);
-        float user_answer = round_to_two_decimals(ans);
-
-        if (user_answer == correct_result) {
-            printf("%s\n", RIGHT_RESP[rand() % 4]);
+        int n1, n2;
+        if(correct < 8) {
+            n1 = rand() % 6;
+            do {
+                n2 = rand() % 6;
+            } while(n2 == 0);
+        } else if(correct > 10) {
+            n1 = rand() % 11;
+            do {
+                n2 = rand() % 11;
+            } while(n2 == 0);
         } else {
-            printf("%s\n", WRONG_RESP[rand() % 4]);
+            n1 = 3 + rand() % 6;
+            do {
+                n2 = 3 + rand() % 6;
+            } while(n2 == 0);
         }
-    } while (round_to_two_decimals(ans) != round_to_two_decimals(n1 / (float)n2));
+
+        do {
+            printf("Poso kanei: %d dia %d ?\n", n1, n2);
+            scanf("%f", &ans);
+
+            float correct_result = round_to_two_decimals(n1 / (float)n2);
+            float user_answer = round_to_two_decimals(ans);
+
+            if (user_answer == correct_result) {
+                printf("%s\n", RIGHT_RESP[rand() % 4]);
+                break;
+            } else {
+                printf("%s\n", WRONG_RESP[rand() % 4]);
+            }
+        } while (1);
+        correct++;
+    } while(correct <= 15);
 }
 void randoperation(void){
 	int x=1+rand()%4;
@@ -139,5 +210,5 @@ void randoperation(void){
     case 2: subtraction(); break;
     case 3: multiplication(); break;
     case 4: division(); break;
-    }
+}
 }
