@@ -83,7 +83,7 @@ int main() {
                 break;
             } else {
                 if(attempts == 2) {
-                    printf("Prospathise na thymase oti: %d kai %d mas kanei %d\n", n1, n2, correct_result);
+                    printf("Prospathise na thymase oti: %d kai %d mas kanei %.0f\n", n1, n2, correct_result);
                     break;
                 }
                 printf("%s\n", WRONG_RESP[rand() % 4]);
@@ -135,7 +135,7 @@ void subtraction(void) {
                 break;
             } else {
                 if(attempts == 2) {
-                    printf("Prospathise na thymase oti: %d plin %d mas kanei %d\n", n1, n2, correct_result);
+                    printf("Prospathise na thymase oti: %d plin %d mas kanei %.0f\n", n1, n2, correct_result);
                     break;
                 }
                 printf("%s\n", WRONG_RESP[rand() % 4]);
@@ -175,55 +175,49 @@ void multiplication(void) {
                 break;
             }else{
                 if(attempts==2){
-                    printf("Prospathise na thymase oti: %d fores to %d mas kanei %d\n", n1, n2, correct_result);
+                    printf("Prospathise na thymase oti: %d fores to %d mas kanei %.0f\n", n1, n2, correct_result);
                     break;
                 }
                 printf("%s\n", WRONG_RESP[rand() % 4]);
                 attempts++;
-            };
+            }
         }while(1);
 
     } while(correct <= 24);
 }
 void division(void) {
     int correct = 0;
-    int ans;
+    float ans;
     do {
         int n1, n2;
-        if(correct < 8) {
+        if(correct < 8){
             n1 = 1 + (rand() % 5);
             n2 = 1 + (rand() % 5);
-            while(n2 > n1) {
-                n2 = 1 + (rand() % 5);
-            }
-        } else if(correct > 16) {
+            
+        }else if(correct > 16) {
             n1 = 1 + (rand() % 10);
             n2 = 1 + (rand() % 10);
-            while(n2 > n1) {
-                n2 = 1 + (rand() % 10);
-            }
         } else {
             n1 = 3 + (rand() % 6);
             n2 = 3 + (rand() % 6);
-            while(n2 > n1) {
-                n2 = 3 + (rand() % 6);
-            }
         }
 
         int attempts = 0;
-        int correct_result = n1 / n2;
+        float correct_result = round_to_two_decimals(n1 / (float)n2);
         
         do {
-            printf("poses fores xwraei to %d sto %d?\n", n2, n1);
-            scanf("%d", &ans);
+            printf("Poses fores xwraei to %d sto %d?\n", n2, n1);
+            scanf("%f", &ans);
 
-            if (ans == correct_result) {
+            float user_answer = round_to_two_decimals(ans);
+
+            if (user_answer == correct_result) {
                 printf("%s\n", RIGHT_RESP[rand() % 4]);
                 correct++;
                 break;
             } else {
                 if(attempts == 2) {
-                    printf("Prospathise na thymase oti to %d xwraei %d fores sto %d\n", n2, correct_result, n1);
+                    printf("Prospathise na thymase oti to %d xwraei %.2f fores sto %d\n", n2, correct_result, n1);
                     break;
                 }
                 printf("%s\n", WRONG_RESP[rand() % 4]);
